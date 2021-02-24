@@ -1,0 +1,27 @@
+name: 'CI'
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm test
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: test-results.json
+
+      - name: Create test report
+        uses: dorny/test-reporter@mocha-json
+        if: success() || failure()
+        with:
+          name: Tests Report
+          path: test-results.json
+          reporter: mocha-json

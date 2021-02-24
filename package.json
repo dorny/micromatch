@@ -34,7 +34,7 @@
     "node": ">=8.6"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --reporter json > test-results.json"
   },
   "dependencies": {
     "braces": "^3.0.1",
