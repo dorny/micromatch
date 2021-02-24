@@ -19,8 +19,6 @@ describe('basic tests', () => {
     patterns.forEach(function(unit, i) {
       it(i + ': ' + unit[0], () => {
         if (typeof unit === 'string') {
-          console.log();
-          console.log(' ', unit);
           return;
         }
 
